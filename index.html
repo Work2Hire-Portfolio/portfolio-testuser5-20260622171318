@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Test User 5 | Executive Portfolio</title>
+  <meta name="description" content="Executive portfolio for Test User 5, Software Engineer with senior application support and production engineering experience." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0f172a;
+      --panel: #111827;
+      --panel-soft: rgba(255,255,255,0.08);
+      --card: #ffffff;
+      --muted: #64748b;
+      --text: #0f172a;
+      --white: #ffffff;
+      --accent: #c9a24e;
+      --accent-2: #f3d98a;
+      --line: rgba(15,23,42,0.12);
+      --shadow: 0 24px 70px rgba(15, 23, 42, 0.18);
+      --radius: 28px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(201,162,78,0.20), transparent 32rem),
+        linear-gradient(180deg, #0f172a 0%, #111827 42%, #f8fafc 42%, #f8fafc 100%);
+      color: var(--text);
+      line-height: 1.65;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 26px 0;
+      color: var(--white);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+      letter-spacing: -0.04em;
+    }
+
+    .brand-mark {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      color: #111827;
+      background: linear-gradient(135deg, var(--accent-2), var(--accent));
+      box-shadow: 0 12px 30px rgba(201,162,78,0.35);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      font-size: 14px;
+      color: rgba(255,255,255,0.78);
+    }
+
+    .nav-links a:hover {
+      color: var(--white);
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(320px, 0.85fr);
+      gap: 28px;
+      align-items: stretch;
+      padding: 28px 0 72px;
+    }
+
+    .hero-card {
+      position: relative;
+      overflow: hidden;
+      border-radius: var(--radius);
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.13);
+      color: var(--white);
+      padding: 48px;
+      box-shadow: var(--shadow);
+      min-height: 560px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .hero-card::before {
+      content: "";
+      position: absolute;
+      inset: -2px;
+      background:
+        radial-gradient(circle at 14% 12%, rgba(243,217,138,0.22), transparent 17rem),
+        radial-gradient(circle at 90% 18%, rgba(255,255,255,0.12), transparent 19rem);
+      pointer-events: none;
+    }
+
+    .hero-content,
+    .hero-actions,
+    .metrics {
+      position: relative;
+      z-index: 1;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      width: fit-content;
+      padding: 8px 13px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.10);
+      border: 1px solid rgba(255,255,255,0.14);
+      color: rgba(255,255,255,0.86);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      margin-bottom: 28px;
+    }
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #22c55e;
+      box-shadow: 0 0 0 6px rgba(34,197,94,0.16);
+    }
+
+    h1 {
+      font-size: clamp(44px, 7vw, 76px);
+      line-height: 0.95;
+      letter-spacing: -0.075em;
+      max-width: 760px;
+      margin-bottom: 22px;
+    }
+
+    .hero-subtitle {
+      color: rgba(255,255,255,0.78);
+      font-size: clamp(17px, 2vw, 21px);
+      max-width: 720px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 34px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-height: 48px;
+      padding: 13px 20px;
+      border-radius: 999px;
+      font-weight: 800;
+      font-size: 14px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent-2), var(--accent));
+      color: #111827;
+      box-shadow: 0 18px 36px rgba(201,162,78,0.28);
+    }
+
+    .btn-secondary {
+      color: var(--white);
+      border: 1px solid rgba(255,255,255,0.18);
+      background: rgba(255,255,255,0.08);
+    }
+
+    .metrics {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 42px;
+    }
+
+    .metric {
+      border-radius: 20px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.12);
+      padding: 18px;
+    }
+
+    .metric strong {
+      display: block;
+      font-size: 26px;
+      letter-spacing: -0.05em;
+      color: var(--accent-2);
+    }
+
+    .metric span {
+      color: rgba(255,255,255,0.68);
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .profile-panel {
+      border-radius: var(--radius);
+      overflow: hidden;
+      background: var(--card);
+      box-shadow: var(--shadow);
+      align-self: stretch;
+      display: flex;
+      flex-direction: column;
+      min-height: 560px;
+    }
+
+    .photo-wrap {
+      position: relative;
+      min-height: 315px;
+      background: linear-gradient(135deg, #d9dde7, #f8fafc);
+      overflow: hidden;
+    }
+
+    .photo-wrap img {
+      width: 100%;
+      height: 100%;
+      min-height: 315px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .status-pill {
+      position: absolute;
+      left: 22px;
+      bottom: 22px;
+      padding: 10px 13px;
+      border-radius: 999px;
+      background: rgba(15,23,42,0.76);
+      color: #ffffff;
+      font-size: 13px;
+      font-weight: 700;
+      backdrop-filter: blur(10px);
+    }
+
+    .profile-info {
+      padding: 28px;
+      display: grid;
+      gap: 18px;
+      flex: 1;
+    }
+
+    .profile-info h2 {
+      font-size: 25px;
+      line-height: 1.12;
+      letter-spacing: -0.045em;
+    }
+
+    .role-tag {
+      color: var(--muted);
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    .contact-grid {
+      display: grid;
+      gap: 10px;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 12px 14px;
+      border-radius: 16px;
+      background: #f8fafc;
+      border: 1px solid #eef2f7;
+      color: #334155;
+      font-size: 14px;
+      overflow-wrap: anywhere;
+    }
+
+    .contact-item b {
+      color: #0f172a;
+      white-space: nowrap;
+    }
+
+    main {
+      padding: 0 0 80px;
+    }
+
+    .section {
+      margin-top: 26px;
+      background: var(--card);
+      border: 1px solid #edf2f7;
+      border-radius: var(--radius);
+      padding: 38px;
+      box-shadow: 0 20px 55px rgba(15, 23, 42, 0.08);
+    }
+
+    .section-header {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 18px;
+      margin-bottom: 24px;
+    }
+
+    .section-kicker {
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-size: 12px;
+      font-weight: 900;
+      margin-bottom: 6px;
+    }
+
+    .section h2 {
+      font-size: clamp(28px, 4vw, 42px);
+      line-height: 1.05;
+      letter-spacing: -0.06em;
+    }
+
+    .lead {
+      max-width: 890px;
+      color: #475569;
+      font-size: 18px;
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: 0.95fr 1.05fr;
+      gap: 24px;
+    }
+
+    .summary-card {
+      border-radius: 24px;
+      background: #0f172a;
+      color: #ffffff;
+      padding: 30px;
+      min-height: 100%;
+    }
+
+    .summary-card h3 {
+      font-size: 25px;
+      letter-spacing: -0.04em;
+      margin-bottom: 14px;
+    }
+
+    .summary-card p {
+      color: rgba(255,255,255,0.74);
+    }
+
+    .skill-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .skill {
+      padding: 18px;
+      border: 1px solid #e2e8f0;
+      background: #f8fafc;
+      border-radius: 20px;
+    }
+
+    .skill strong {
+      display: block;
+      margin-bottom: 4px;
+      letter-spacing: -0.02em;
+    }
+
+    .skill span {
+      color: #64748b;
+      font-size: 14px;
+    }
+
+    .timeline {
+      display: grid;
+      gap: 18px;
+    }
+
+    .experience {
+      position: relative;
+      border: 1px solid #e2e8f0;
+      border-radius: 24px;
+      background: #ffffff;
+      padding: 26px;
+      overflow: hidden;
+    }
+
+    .experience::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 6px;
+      height: 100%;
+      background: linear-gradient(180deg, var(--accent-2), var(--accent));
+    }
+
+    .experience-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      margin-bottom: 16px;
+    }
+
+    .experience h3 {
+      font-size: 22px;
+      line-height: 1.2;
+      letter-spacing: -0.04em;
+      padding-left: 4px;
+    }
+
+    .company {
+      color: #475569;
+      margin-top: 4px;
+      font-weight: 700;
+    }
+
+    .date {
+      flex: 0 0 auto;
+      height: fit-content;
+      padding: 8px 12px;
+      border-radius: 999px;
+      color: #7c5a0b;
+      background: #fff7d6;
+      border: 1px solid #f5df94;
+      font-size: 13px;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    ul {
+      list-style: none;
+      display: grid;
+      gap: 12px;
+      margin-top: 14px;
+    }
+
+    li {
+      position: relative;
+      padding-left: 28px;
+      color: #475569;
+    }
+
+    li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: #16a34a;
+      font-weight: 900;
+    }
+
+    .impact-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .impact {
+      border-radius: 22px;
+      padding: 24px;
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+    }
+
+    .impact strong {
+      display: block;
+      font-size: 32px;
+      line-height: 1;
+      letter-spacing: -0.06em;
+      color: #0f172a;
+      margin-bottom: 10px;
+    }
+
+    .impact span {
+      color: #64748b;
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    .footer {
+      color: rgba(255,255,255,0.7);
+      padding: 36px 0 44px;
+      text-align: center;
+      font-size: 14px;
+    }
+
+    @media (max-width: 980px) {
+      .hero,
+      .two-col {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-card,
+      .profile-panel {
+        min-height: auto;
+      }
+
+      .metrics,
+      .impact-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .nav-links {
+        display: none;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .page {
+        width: min(100% - 22px, 1180px);
+      }
+
+      .hero-card,
+      .section {
+        padding: 26px;
+        border-radius: 24px;
+      }
+
+      .metrics,
+      .skill-grid,
+      .impact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .experience-head,
+      .section-header {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .date {
+        white-space: normal;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <nav class="nav" aria-label="Primary navigation">
+      <a class="brand" href="#top" aria-label="Test User 5 portfolio home">
+        <span class="brand-mark">TU</span>
+        <span>Test User 5</span>
+      </a>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#expertise">Expertise</a>
+        <a href="#experience">Experience</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+
+    <header class="hero" id="top">
+      <section class="hero-card" aria-label="Portfolio introduction">
+        <div class="hero-content">
+          <div class="eyebrow"><span class="dot"></span> Senior Software Engineering Portfolio</div>
+          <h1>Reliable production systems for banking and enterprise platforms.</h1>
+          <p class="hero-subtitle">
+            Test User 5 is a software engineering professional with 10–15 years of experience across production support,
+            Java-based enterprise services, banking workflows, insurance applications, incident management, and stakeholder-led delivery.
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="https://innovit-candidate-documents.s3.ap-south-1.amazonaws.com/resumes/932598204ff642ef953773bbcb55be29-Anandini_Srivastava_Resume2.pdf" target="_blank" rel="noopener">View Resume</a>
+            <a class="btn btn-secondary" href="mailto:indianswegg@gmail.com">Contact Me</a>
+            <a class="btn btn-secondary" href="https://linkedin.com/in/anandini-srivastava" target="_blank" rel="noopener">LinkedIn</a>
+          </div>
+        </div>
+
+        <div class="metrics" aria-label="Career highlights">
+          <div class="metric">
+            <strong>99.9%</strong>
+            <span>Application availability supported</span>
+          </div>
+          <div class="metric">
+            <strong>30%</strong>
+            <span>Reduction in repeat defects</span>
+          </div>
+          <div class="metric">
+            <strong>95%</strong>
+            <span>SLA timeline closure target</span>
+          </div>
+          <div class="metric">
+            <strong>25%</strong>
+            <span>Response-time improvement</span>
+          </div>
+        </div>
+      </section>
+
+      <aside class="profile-panel" aria-label="Profile summary">
+        <div class="photo-wrap">
+          <img src="https://innovit-candidate-documents.s3.ap-south-1.amazonaws.com/profile-pics/00868038784144b4aab367fa87f3ff15-Screenshot_2026-06-22_144835.png" alt="Test User 5 profile photo" />
+          <div class="status-pill">Open to Software Engineering roles</div>
+        </div>
+        <div class="profile-info">
+          <div>
+            <h2>Test User 5</h2>
+            <p class="role-tag">Software Engineer · 10-15 years</p>
+          </div>
+          <div class="contact-grid" id="contact">
+            <a class="contact-item" href="mailto:indianswegg@gmail.com"><b>Email</b><span>indianswegg@gmail.com</span></a>
+            <a class="contact-item" href="tel:8454040866"><b>Phone</b><span>8454040866</span></a>
+            <a class="contact-item" href="https://linkedin.com/in/anandini-srivastava" target="_blank" rel="noopener"><b>LinkedIn</b><span>linkedin.com/in/anandini-srivastava</span></a>
+          </div>
+        </div>
+      </aside>
+    </header>
+
+    <main>
+      <section class="section" id="about">
+        <div class="section-header">
+          <div>
+            <p class="section-kicker">Professional Summary</p>
+            <h2>Production-first engineering mindset.</h2>
+          </div>
+        </div>
+        <p class="lead">
+          Senior software engineering professional experienced in supporting high-availability financial technology systems,
+          resolving critical incidents, improving operational reliability, and coordinating cross-functional delivery across
+          development, QA, infrastructure, business, and release teams.
+        </p>
+      </section>
+
+      <section class="section" id="expertise">
+        <div class="two-col">
+          <div class="summary-card">
+            <p class="section-kicker">Core Strength</p>
+            <h3>Enterprise application support with measurable reliability outcomes.</h3>
+            <p>
+              Brings practical expertise in Java, Spring Boot, Kafka, REST APIs, SQL diagnostics, Redis, JIRA, Agile ceremonies,
+              ITIL documentation, root-cause analysis, release coordination, and preventive monitoring for business-critical systems.
+            </p>
+          </div>
+          <div class="skill-grid" aria-label="Skills">
+            <div class="skill">
+              <strong>Backend Engineering</strong>
+              <span>Java, Spring Boot, REST APIs, Kafka-based services</span>
+            </div>
+            <div class="skill">
+              <strong>Production Support</strong>
+              <span>P1/P2 incidents, RCA, log analysis, SLA ownership</span>
+            </div>
+            <div class="skill">
+              <strong>Data & Diagnostics</strong>
+              <span>SQL investigation, defect analysis, monitoring controls</span>
+            </div>
+            <div class="skill">
+              <strong>Delivery & Governance</strong>
+              <span>JIRA, Agile ceremonies, release management, ITIL docs</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-header">
+          <div>
+            <p class="section-kicker">Business Impact</p>
+            <h2>Highlights that matter.</h2>
+          </div>
+        </div>
+        <div class="impact-grid">
+          <div class="impact">
+            <strong>24/7</strong>
+            <span>Banking operations support across production workflows</span>
+          </div>
+          <div class="impact">
+            <strong>8</strong>
+            <span>Cross-functional stakeholder groups coordinated</span>
+          </div>
+          <div class="impact">
+            <strong>ITIL</strong>
+            <span>Process-aligned documentation and preventive controls</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="experience">
+        <div class="section-header">
+          <div>
+            <p class="section-kicker">Experience</p>
+            <h2>Selected professional journey.</h2>
+          </div>
+        </div>
+
+        <div class="timeline">
+          <article class="experience">
+            <div class="experience-head">
+              <div>
+                <h3>Specialist, Software Engineering</h3>
+                <p class="company">LtiMindTree Pvt. Ltd. · Credit Score Analysis Tool, Swedbank · Mumbai, India</p>
+              </div>
+              <span class="date">Dec 2019 – Feb 2026</span>
+            </div>
+            <ul>
+              <li>Led production support management for Java, Spring Boot, Kafka, and REST API services, sustaining 99.9% application availability across 24/7 banking operations.</li>
+              <li>Resolved Priority 1 and Priority 2 incident queues through SQL diagnostics, log analysis, and root-cause analysis, reducing repeat defects by 30%.</li>
+              <li>Coordinated with 8 development, QA, infrastructure, and business stakeholders through JIRA, Agile ceremonies, and release management to close SLA issues within 95% target timelines.</li>
+              <li>Implemented preventive monitoring controls, Redis caching fixes, and ITIL-aligned documentation, improving response time by 25% across multi-service production workflows.</li>
+            </ul>
+          </article>
+
+          <article class="experience">
+            <div class="experience-head">
+              <div>
+                <h3>Senior Consultant</h3>
+                <p class="company">Capgemini Pvt. Ltd. · Claims Processing System, Statewide Insurance Group · Mumbai, India</p>
+              </div>
+              <span class="date">Jul 2016 – Oct 2019</span>
+            </div>
+            <ul>
+              <li>Managed application support for insurance claims systems, contributing to stable business operations and issue resolution across production environments.</li>
+              <li>Supported enterprise delivery workflows through incident analysis, team coordination, and structured communication with technology and business stakeholders.</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-header">
+          <div>
+            <p class="section-kicker">Next Role</p>
+            <h2>Targeting senior software engineering opportunities.</h2>
+          </div>
+        </div>
+        <p class="lead">
+          Focused on roles that combine backend engineering, production reliability, enterprise platform support,
+          incident leadership, and continuous improvement for high-availability systems.
+        </p>
+        <div class="hero-actions" style="margin-top: 24px;">
+          <a class="btn btn-primary" href="mailto:indianswegg@gmail.com">Start a Conversation</a>
+          <a class="btn btn-secondary" style="color:#0f172a; border-color:#e2e8f0; background:#f8fafc;" href="https://innovit-candidate-documents.s3.ap-south-1.amazonaws.com/resumes/932598204ff642ef953773bbcb55be29-Anandini_Srivastava_Resume2.pdf" target="_blank" rel="noopener">Download Resume</a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      © 2026 Test User 5. Executive portfolio generated from candidate profile data.
+    </footer>
+  </div>
+</body>
+</html>
